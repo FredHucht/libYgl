@@ -978,7 +978,7 @@ static void create_main_window(const char *caller, const char *Title,
   set_cmapwins(caller, w, 1);
   create_gc(caller, Ygl.ActiveWindow);
   
-  XStoreName(D, w->main, Title);
+  if (Title) XStoreName(D, w->main, Title);
   
   xwmh.flags = StateHint | InputHint;
   xwmh.input = True;
