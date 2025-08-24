@@ -108,7 +108,7 @@ the behavior of <CITE><B>Ygl</B></CITE>:
 
   <LI>  The environment variables <B>YGL_CMAPVISUAL</B> or
 	<B>YGL_CV</B> and <B>YGL_RGBVISUAL</B> or <B>YGL_RV</B>
-	control the selection of visuals for cmapmode and . Set
+	control the selection of visuals for colormap mode and RGB mode. Set
 	these variables to the visual id of the desired visual as
 	returned by xdpyinfo (both hex and decimal is ok). Setting one
 	of these variables to -1 forces <CITE><B>Ygl</B></CITE> to use
@@ -135,14 +135,13 @@ the behavior of <CITE><B>Ygl</B></CITE>:
 
   <LI>  <A NAME="dither"></A>The environment variable
 	<B>YGL_DITHERSIZE</B> or <B>YGL_DSZ</B> controls dithering in
-	RGB mode.With this variable you can specify the size of the
+	RGB mode. With this variable you can specify the size of the
 	dither matrix. The default value is 4, leading to a 4x4 dither
 	matrix. Valid values range from 0 to 6. On a normal 8 bit
 	TrueColor visual ({3,3,2} bits {red,green,blue}) you obtain
 	113x113x49 = 625681 different "colors" with YGL_DSZ=4, leading
 	to an effective screen depth of approx. 19 bits. The other
 	values and the effective screendepth are:
-
 <PRE>
          |  8 bit (3-3-2)  | 12 bit (4-4-4)  |  16 bit (6-5-5)
   YGL_DSZ| # colors (bits) | # colors (bits) |  # colors (bits)
@@ -154,11 +153,9 @@ the behavior of <CITE><B>Ygl</B></CITE>:
      5   |  2354176 (21.2) | 53157376 (25.7) | 949029376 (29.8)
      6   |  6976981 (22.7) |158340421 (27.2) |2831006341 (31.4)
 </PRE>
-
 	<B>Note</B> that dithering costs speed. You may set YGL_DSZ=0
 	to disable dithering. If you are lucky and have a 24 bit 
 	TrueColor visual, YGL_DSZ is automatically set to zero.
-
 </UL>
 
 <H3> Doublebuffering: </H3>
@@ -550,7 +547,7 @@ This affects the routines
 
 The following routines are added to standard GL:
 <UL>
-<LI><TT>GC getXgc(void) </TT><BR>
+<LI><TT>GC getXgc(void)</TT><BR>
 	return current graphics context. You can for example use it to
 	draw lines xor'ed with the background: 
 <PRE>
@@ -563,38 +560,34 @@ XSetFunction(getXdpy(), getXgc(), GXxor);
 	can use the routine logicop() to set the drawing function. 
 <P>
 
-<LI><TT>Window getXdid() </TT><BR>
+<LI><TT>Window getXdid()</TT><BR>
 	return window id of the current drawable. This id differs from
 	the window id returned by <TT>getXwid()</TT> when in RGB mode
 	or when using doublebuffering.<P>
 
-<LI><TT>Int32 crectread(Screencoord x1, Screencoord y1,
-	Screencoord x2, Screencoord y2, Uint8 *data) </TT><BR> 
+<LI><TT>Int32 crectread(Scoord x1, Scoord y1, Scoord x2, Scoord y2, Uint8 *data)</TT><BR> 
 	read screen data to unsigned char array <TT>data</TT><P>
 
-<LI><TT>void crectwrite(Screencoord x1, Screencoord y1,
-	Screencoord x2, Screencoord y2, Uint8 *data) </TT><BR>
+<LI><TT>void crectwrite(Scoord x1, Scoord y1, Scoord x2, Scoord y2, Uint8 *data)</TT><BR>
 	write unsigned char array <TT>data</TT> to screen<P>
 
-<LI><TT>void arcxs(Scoord x,Scoord y,Scoord rx,Scoord ry,Angle s,Angle e) <BR>
-	void arcxi(Icoord x,Icoord y,Icoord rx,Icoord ry,Angle s,Angle e) <BR>
-	void arcx(Coord x,Coord y,Coord rx,Coord ry,Angle s,Angle e) </TT><BR>
+<LI><TT>void arcxs(Scoord x,Scoord y,Scoord rx,Scoord ry,Angle s,Angle e)<BR>
+void arcxi(Icoord x,Icoord y,Icoord rx,Icoord ry,Angle s,Angle e)<BR>
+void arcx(Coord x,Coord y,Coord rx,Coord ry,Angle s,Angle e)</TT><BR>
 	draw ellipses<P>
 
-<LI><TT>void arcxfs(Scoord x,Scoord y,Scoord rx,Scoord ry,Angle s,Angle e) <BR>
-	void arcxfi(Icoord x,Icoord y,Icoord rx,Icoord ry,Angle s,Angle e) <BR>
-	void arcxf(Coord x,Coord y,Coord rx,Coord ry,Angle s,Angle e) </TT><BR>
+<LI><TT>void arcxfs(Scoord x,Scoord y,Scoord rx,Scoord ry,Angle s,Angle e)<BR>
+void arcxfi(Icoord x,Icoord y,Icoord rx,Icoord ry,Angle s,Angle e)<BR>
+void arcxf(Coord x,Coord y,Coord rx,Coord ry,Angle s,Angle e)</TT><BR>
 	draw filled ellipses<P>
 
-<LI><TT>int gl2ppm(char *filename) </TT><BR>
-	write out active <CITE><B>Ygl</B></CITE> window to
-	<A HREF="/cgi-bin/man.pl?ppm.5">portable pixmap file</A>
+<LI><TT>int gl2ppm(char *filename)</TT><BR>
+	write out active <CITE><B>Ygl</B></CITE> window to portable pixmap file
 	<TT>'filename'</TT>. When <TT>filename[0] == '|'</TT>, uses
 	<TT>popen()</TT> instead of <TT>fopen()</TT>. <B>Note</B> that
 	<TT>gl2ppm()</TT> can also be used in a GL application. Just
 	add <TT>gl2ppm.o</TT> to the list of object files.
 <P> 
-
 </UL>
 
 <H2> Acknowledgements </H2>
