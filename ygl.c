@@ -4,12 +4,12 @@
  *    EMail: fred<at>thp.uni-due.de
  */
 
-#define VERSION "4.2f" /* gversion() only allows 12 chars (3 of VERSION) */
+#define VERSION "4.3" /* gversion() only allows 12 chars (max 4 for VERSION) */
 
 static const char vcid[] = "$Id: ygl.c,v 4.18 2009-09-10 09:38:24+02 fred Exp $";
 
 static const char * const WhatString[]= {
-  "@(#)Ygl V" VERSION " by Fred Hucht (C) 1993-2009",
+  "@(#)Ygl V" VERSION " by Fred Hucht (C) 1993-2025",
   "@(#)http://www.thp.uni-due.de/Ygl/",
   "@(#)EMail: fred <at> thp.uni-due.de"
 };

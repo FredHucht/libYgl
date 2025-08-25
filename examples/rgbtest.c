@@ -101,15 +101,17 @@ int main() {
 	char buf[80];
 	getorigin(&x, &y);
 	getsize(&xs, &ys);
-	if(MOUSEX != qread(&mx) || MOUSEY != qread(&my))
+	if(MOUSEX != qread(&mx) || MOUSEY != qread(&my)) {
 	  printf("tie doesn't work, strange...\n");
-	x = (mx - x) * xo / xs;
-	y = (my - y) * yo / ys;
-	/* Next line is to get the real color (not the desired)
-	 * on <24 bit Visuals */
-	RGBcolor(x, green, y); gRGBcolor(&r, &g, &b);
-	sprintf(buf,"Color at (%d,%d) is (%d,%d,%d).",x,y,r,g,b);
-	wintitle(buf);
+	} else {
+	  x = (mx - x) * xo / xs;
+	  y = (my - y) * yo / ys;
+	  /* Next line is to get the real color (not the desired)
+	   * on <24 bit Visuals */
+	  RGBcolor(x, green, y); gRGBcolor(&r, &g, &b);
+	  sprintf(buf,"Color at (%d,%d) is (%d,%d,%d).",x,y,r,g,b);
+	  wintitle(buf);
+	}
       } else { /* Restore original title */
 	wintitle(Title);
       }
