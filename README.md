@@ -3,10 +3,10 @@ libYgl emulates SGI's GL routines under X11
 <!--- $Id: ReadMe.html,v 3.6 2005-02-03 11:43:25+01 fred Exp fred $ --->
 
 <H1> <IMG SRC="Smile.gif" ALIGN=MIDDLE ALT="Logo">
-Ygl Version 4.2 Description </H1>
+Ygl Version 4.3 Description </H1>
 
 <H4>
-<FONT SIZE=4>&copy;</FONT>opyright 1993-2016 by
+<FONT SIZE=4>&copy;</FONT>opyright 1993-2025 by
 <A HREF="/~fred/">Fred Hucht (fred(AT)thp.uni-due.de)</A>
 </H4>
 <P>
@@ -24,7 +24,7 @@ the <A HREF="FAQ.html">Ygl FAQ</A>.
 
 <CITE><B>Ygl</B></CITE> emulates <A HREF="#SGI">SGI's GL</A> routines
 under X11. It compiles fine under AIX >3.2, HP-UX >7.0, Linux
-with XFree/Xorg, SunOS, ConvexOS, Mac A/UX, Mac OS/X and many others,
+with XFree/Xorg, SunOS, ConvexOS, Mac A/UX, Mac OS/X, macOS, and many others,
 but needs an ANSI-C compiler (gcc is ok). It was written for two reasons:
 
 <UL>
